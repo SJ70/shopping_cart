@@ -25,4 +25,8 @@ public class Product {
         return id.hashCode();
     }
 
+    public String toString() {
+        return String.format("%s : %s", name, price);
+    }
+
 }
