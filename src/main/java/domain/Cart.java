@@ -1,7 +1,9 @@
 package domain;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Cart {
 
@@ -30,6 +32,13 @@ public class Cart {
 
     public int getCountOfProduct(Product product) {
         return products.getOrDefault(product, 0);
+    }
+
+    public String toString() {
+        return products.entrySet()
+                .stream()
+                .map(entry -> String.format("%s : %d", entry.getKey().getName(), entry.getValue()))
+                .collect(Collectors.joining("\n"));
     }
 
 }

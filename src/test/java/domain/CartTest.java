@@ -41,4 +41,21 @@ public class CartTest {
         Assertions.assertEquals(0, cart.getCountOfProduct(p1));
     }
 
+    @Test
+    public void testToString() {
+        cart.addProduct(p1, 1);
+        cart.addProduct(p2, 2);
+        System.out.println(cart);
+        Assertions.assertTrue(
+                cart.toString().contains(
+                        String.format("%s : %d", p1.getName(), cart.getCountOfProduct(p1))
+                )
+        );
+        Assertions.assertTrue(
+                cart.toString().contains(
+                        String.format("%s : %d", p2.getName(), cart.getCountOfProduct(p2))
+                )
+        );
+    }
+
 }
