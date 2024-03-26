@@ -18,6 +18,14 @@ public class Cart {
         this.products.put(product, getCountOfProduct(product) + 1);
     }
 
+    public void removeProduct(Product product, int count) {
+        this.products.put(product, getCountOfProduct(product) - count);
+    }
+
+    public void removeProduct(Product product) {
+        this.products.remove(product);
+    }
+
     public int getCountOfProduct(Product product) {
         return products.getOrDefault(product, 0);
     }

@@ -25,4 +25,13 @@ public class CartTest {
         Assertions.assertEquals(3, cart.getCountOfProduct(p1));
     }
 
+    @Test
+    public void testRemoveAndCount() {
+        cart.addProduct(p1, 10);
+        cart.removeProduct(p1, 2);
+        Assertions.assertEquals(8, cart.getCountOfProduct(p1));
+        cart.removeProduct(p1);
+        Assertions.assertEquals(0, cart.getCountOfProduct(p1));
+    }
+
 }
