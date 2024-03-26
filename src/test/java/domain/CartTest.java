@@ -34,4 +34,11 @@ public class CartTest {
         Assertions.assertEquals(0, cart.getCountOfProduct(p1));
     }
 
+    @Test
+    public void testRemoveMore() {
+        cart.addProduct(p1, 10);
+        cart.removeProduct(p1, 100);
+        Assertions.assertEquals(0, cart.getCountOfProduct(p1));
+    }
+
 }

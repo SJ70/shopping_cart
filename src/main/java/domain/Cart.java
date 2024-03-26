@@ -1,14 +1,11 @@
 package domain;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Cart {
 
-    private HashMap<Product, Integer> products;
-
-    public Cart() {
-        this.products = new HashMap<>();
-    }
+    private Map<Product, Integer> products = new HashMap<>();
 
     public void addProduct(Product product, int count) {
         this.products.put(product, getCountOfProduct(product) + count);
@@ -19,7 +16,12 @@ public class Cart {
     }
 
     public void removeProduct(Product product, int count) {
-        this.products.put(product, getCountOfProduct(product) - count);
+        int resultCount = getCountOfProduct(product) - count;
+        if (resultCount <= 0) {
+            removeProduct(product);
+            return;
+        }
+        this.products.put(product, resultCount);
     }
 
     public void removeProduct(Product product) {
