@@ -12,6 +12,13 @@ public class Products {
         products.add(product);
     }
 
+    public Product searchProduct(String name) {
+        return products.stream()
+                .filter(p -> p.getName().equals(name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 상품명"));
+    }
+
     public String toString() {
         return products.stream().map(Product::toString).collect(Collectors.joining("\n"));
     }

@@ -1,4 +1,5 @@
 import domain.Cart;
+import domain.Product;
 import domain.Products;
 import view.InputView;
 import view.OutputView;
@@ -26,16 +27,27 @@ public class CartApp {
         // 상품 목록 확인
         outputView.printProducts(products);
 
+
         // 장바구니 생성
         Cart cart = new Cart();
 
         while (true) {
-
+            outputView.printBlankLine();
+            outputView.printCartMenu();
+            switch (inputView.input()) {
+                case "1" :
+                    outputView.printRequestAddCart();
+                    cart.addProduct(products.searchProduct(inputView.input()));
+                    break;
+                case "2" :
+                    outputView.printRequestRemoveCart();
+                    cart.removeProduct(products.searchProduct(inputView.input()));
+                    break;
+                case "3" :
+                    outputView.printCartList(cart);
+                    break;
+            }
         }
-
-        // TODO: 상품을 장바구니에 추가
-        // TODO: 상품을 장바구니에서 제거
-        // TODO: 장바구니에 현재 담긴 상품들을 출력 (상품이름, 각 상품의 갯수)
 
     }
 }
